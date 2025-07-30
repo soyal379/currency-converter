@@ -1,0 +1,215 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.container {
+    width: 100%;
+    max-width: 480px;
+    margin: auto;
+    position: relative;
+    z-index: 1;
+}
+
+.sec-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1),
+                0 8px 16px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease;
+}
+
+.sec-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15),
+                0 12px 20px rgba(0, 0, 0, 0.12);
+}
+
+.title {
+    color: #2d3748;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 28px;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.converter {
+    display: grid;
+    grid-template-columns: 1fr 40px 1fr;
+    gap: 20px;
+    align-items: center;
+}
+
+.converter input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: white;
+    grid-column: 1/4;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.converter input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+    outline: none;
+}
+
+.select-container {
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background: white;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.select-container:hover {
+    border-color: #667eea;
+    transform: translateY(-2px);
+}
+
+.select-container img {
+    width: 26px;
+    height: 26px;
+    margin-right: 10px;
+    border-radius: 40%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.select-container select {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-size: 15px;
+    cursor: pointer;
+    color: #2d3748;
+    appearance: none;
+}
+
+.select-container select:focus {
+    outline: none;
+}
+
+.equal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: #4a5568;
+    transition: all 0.3s ease;
+}
+
+.equal i {
+    transition: transform 0.3s ease;
+}
+
+.equal:hover i {
+    transform: rotate(180deg);
+}
+
+#result {
+    grid-column: 1 / -1;
+    padding: 15px;
+    border-radius: 12px;
+    background: #f7fafc;
+    text-align: center;
+    font-size: 16px;
+    color: #2d3748;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+#convertBtn {
+    grid-column: 1 / -1;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(102, 126, 234, 0.2);
+}
+
+#convertBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(102, 126, 234, 0.3);
+}
+
+#convertBtn:active {
+    transform: translateY(0);
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+    
+    .sec-container {
+        padding: 25px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .converter {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .equal {
+        display: none;
+    }
+    
+    .select-container {
+        padding: 10px;
+    }
+    
+    .title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .converter input,
+    #result,
+    #convertBtn {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
